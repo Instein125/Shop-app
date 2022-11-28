@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +10,7 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productObject = Provider.of<Products>(context);
+
     final loadedProducts = productObject.items;
     return GridView.builder(
         padding: const EdgeInsets.all(10),
@@ -18,11 +21,14 @@ class ProductGrid extends StatelessWidget {
           mainAxisSpacing: 10,
           childAspectRatio: 3 / 2.5,
         ),
-        itemBuilder: (ctx, i) => ProductItem(
-              loadedProducts[i].id,
-              loadedProducts[i].imageUrl,
-              loadedProducts[i].title,
-              loadedProducts[i].price,
+        itemBuilder: (ctx, i) => ChangeNotifierProvider(
+              create: (c) => loadedProducts[i],
+              child: ProductItem(
+                  // loadedProducts[i].id,
+                  // loadedProducts[i].imageUrl,
+                  // loadedProducts[i].title,
+                  // loadedProducts[i].price,
+                  ),
             ));
   }
 }

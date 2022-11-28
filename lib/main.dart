@@ -1,10 +1,11 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/screens/products_overview_screen.dart';
 import './providers/productsProviders.dart';
+import './screens/productDetailScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
         ),
         home: ProductOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        },
       ),
     );
   }
