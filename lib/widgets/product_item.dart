@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
   const ProductItem();
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: false);
+    final product = Provider.of<Product>(context, listen: true);
     print(product.title);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
