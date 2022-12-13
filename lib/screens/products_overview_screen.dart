@@ -1,10 +1,12 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // import '../providers/productsProviders.dart';
+import '/providers/cart.dart';
 import '../widgets/product_grid.dart';
+import '../widgets/badge.dart';
 
 enum Filters {
   favorites,
@@ -48,7 +50,17 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                 }
               });
             },
-          )
+          ),
+          Consumer<Cart>(
+            builder: ((_, cart, ch) => Badge(
+                value: cart.itemCount.toString(),
+                color: Theme.of(context).accentColor,
+                child: ch!)),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: (() {}),
+            ),
+          ),
         ],
       ),
       body: ProductGrid(_showFavoutites),
